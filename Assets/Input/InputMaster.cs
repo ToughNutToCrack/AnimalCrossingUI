@@ -41,6 +41,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""RotatePlayer"",
+                    ""type"": ""Value"",
+                    ""id"": ""e16b8f7f-c998-4e0d-93f8-e5d09ea10ad6"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -142,6 +150,39 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""SecondaryMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""7f062ccf-15d1-4cce-8cf3-c15a3589a6e8"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotatePlayer"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""be8c818c-4629-424e-92c1-cd991ed83506"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotatePlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""a90e65a1-5d3b-4b71-92ea-9657048b1aa2"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotatePlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -153,6 +194,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Confirm = m_Player.FindAction("Confirm", throwIfNotFound: true);
         m_Player_SecondaryMovement = m_Player.FindAction("SecondaryMovement", throwIfNotFound: true);
+        m_Player_RotatePlayer = m_Player.FindAction("RotatePlayer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +247,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Confirm;
     private readonly InputAction m_Player_SecondaryMovement;
+    private readonly InputAction m_Player_RotatePlayer;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
@@ -212,6 +255,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Confirm => m_Wrapper.m_Player_Confirm;
         public InputAction @SecondaryMovement => m_Wrapper.m_Player_SecondaryMovement;
+        public InputAction @RotatePlayer => m_Wrapper.m_Player_RotatePlayer;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +274,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @SecondaryMovement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryMovement;
                 @SecondaryMovement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryMovement;
                 @SecondaryMovement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryMovement;
+                @RotatePlayer.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePlayer;
+                @RotatePlayer.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePlayer;
+                @RotatePlayer.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotatePlayer;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +290,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @SecondaryMovement.started += instance.OnSecondaryMovement;
                 @SecondaryMovement.performed += instance.OnSecondaryMovement;
                 @SecondaryMovement.canceled += instance.OnSecondaryMovement;
+                @RotatePlayer.started += instance.OnRotatePlayer;
+                @RotatePlayer.performed += instance.OnRotatePlayer;
+                @RotatePlayer.canceled += instance.OnRotatePlayer;
             }
         }
     }
@@ -252,5 +302,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
         void OnSecondaryMovement(InputAction.CallbackContext context);
+        void OnRotatePlayer(InputAction.CallbackContext context);
     }
 }
