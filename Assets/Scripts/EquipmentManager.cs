@@ -17,9 +17,10 @@ public class EquipmentManager : Singleton<EquipmentManager>
 {
     public List<Texture> skins;
     public List<Image> hairColorImages;
-    public List<GameObject> hairs, noses, mouths, eyes;
+    public List<GameObject> hairs, noses, mouths;
     public Material mainMat;
     public Material hairMat;
+    public Material eyeMat;
     public Animator playerAnimator;
 
     int skinIndex, hairIndex, hairColorIndex, eyeIndex, noseIndex, mouthIndex, cheeksIndex;
@@ -34,10 +35,10 @@ public class EquipmentManager : Singleton<EquipmentManager>
             hairColors.Add(img.color);
         AssignHairColor(0);
 
-        //AssignEye(0);
+        AssignEye(0);
         AssignNose(0);
         AssignMouth(0);
-        //AssignCheek(0);
+        AssignCheek(0);
     }
 
     public void AssignSkin(int id)
@@ -60,9 +61,11 @@ public class EquipmentManager : Singleton<EquipmentManager>
     public void AssignEye(int id)
     {
         eyeIndex = id;
-        foreach (var eye in eyes)
-            eye.SetActive(false);
-        eyes[eyeIndex].SetActive(true);
+        if (id == 0)
+            eyeMat.SetTextureOffset("_BaseMap", new Vector2(1, 0));
+        else if (id == 1)
+            eyeMat.SetTextureOffset("_BaseMap", new Vector2(1.5f, 0));
+
     }
     public void AssignNose(int id)
     {

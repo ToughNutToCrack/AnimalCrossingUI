@@ -23,8 +23,8 @@ public class RotateCharacter : MonoBehaviour
     {
         var val = input.Player.RotatePlayer.ReadValue<float>();
         if (val == 1)
-            goToRotate.Rotate(angularSpeed * Time.deltaTime);
-        else if (val == -1)
             goToRotate.Rotate(-1 * angularSpeed * Time.deltaTime);
+        else if (val == -1)
+            goToRotate.Rotate(angularSpeed * Time.deltaTime);
     }
 }
