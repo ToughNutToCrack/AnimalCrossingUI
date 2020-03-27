@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1705,7 +1705,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3e9d3d70836be8f438c7efb973b6f777,
+      objectReference: {fileID: 21300000, guid: 25c4cfff9d8860446ba2f5044f932bae,
         type: 3}
     - target: {fileID: 8884818098649692178, guid: 3dede0057fe8d3846b55ead3574286ec,
         type: 3}
@@ -1736,7 +1736,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3e9d3d70836be8f438c7efb973b6f777,
+      objectReference: {fileID: 21300000, guid: 25c4cfff9d8860446ba2f5044f932bae,
         type: 3}
     - target: {fileID: 8884818098111387434, guid: 3dede0057fe8d3846b55ead3574286ec,
         type: 3}
@@ -8299,7 +8299,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 25c4cfff9d8860446ba2f5044f932bae,
+      objectReference: {fileID: 21300000, guid: 3e9d3d70836be8f438c7efb973b6f777,
         type: 3}
     - target: {fileID: 8884818098649692178, guid: 3dede0057fe8d3846b55ead3574286ec,
         type: 3}
@@ -8330,7 +8330,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 25c4cfff9d8860446ba2f5044f932bae,
+      objectReference: {fileID: 21300000, guid: 3e9d3d70836be8f438c7efb973b6f777,
         type: 3}
     - target: {fileID: 8884818098111387434, guid: 3dede0057fe8d3846b55ead3574286ec,
         type: 3}
